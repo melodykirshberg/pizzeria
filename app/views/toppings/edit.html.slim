@@ -1,0 +1,7 @@
+.content-body  
+  .w-full
+  h1.font-bold.text-4xl
+    | Editing #{@topping.name}
+  = render "form", topping: @topping
+  = link_to "Cancel", @topping, class: "show-edit-button"
+  = link_to "Back to toppings", toppings_path, class: "show-edit-button"

@@ -1,0 +1,21 @@
+.form-body  
+  h2.form-title Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "field" }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    .field
+      = f.label :email, class: "form-field"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input"
+    
+    .field
+      = f.label :password, class: "form-field"
+      = f.password_field :password, autocomplete: "current-password", class: "form-input"
+    
+    - if devise_mapping.rememberable?
+      .field.form-remember
+        = f.check_box :remember_me
+        = f.label :remember_me, class: "form-field w-full ml-2"
+    
+    = f.submit "Log in", class: "submit-button"
+
+  = render "devise/shared/links"

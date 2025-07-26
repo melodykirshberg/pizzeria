@@ -1,4 +1,5 @@
 class PizzasController < ApplicationController
+  before_action :require_chef, only: %i[ index new create edit update destroy ]
   before_action :set_pizza, only: %i[ show edit update destroy ]
 
   # GET /pizzas or /pizzas.json
@@ -25,7 +26,7 @@ class PizzasController < ApplicationController
 
     respond_to do |format|
       if @pizza.save
-        format.html { redirect_to @pizza, notice: "Pizza was successfully created." }
+        format.html { redirect_to @pizza, notice: "#{@pizza.name} was successfully created." }
         format.json { render :show, status: :created, location: @pizza }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class PizzasController < ApplicationController
   def update
     respond_to do |format|
       if @pizza.update(pizza_params)
-        format.html { redirect_to @pizza, notice: "Pizza was successfully updated." }
+        format.html { redirect_to @pizza, notice: "#{@pizza.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @pizza }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class PizzasController < ApplicationController
     @pizza.destroy!
 
     respond_to do |format|
-      format.html { redirect_to pizzas_path, status: :see_other, notice: "Pizza was successfully destroyed." }
+      format.html { redirect_to pizzas_path, status: :see_other, notice: "#{@pizza.name} was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,6 @@ class PizzasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pizza_params
-      params.expect(pizza: [ :name ])
+      params.require(:pizza).permit(:name, topping_ids: [])
     end
 end

@@ -1,0 +1,13 @@
+nav.navbar.fixed.top-0.left-0.w-full.bg-white.shadow-md.z-50
+  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
+    .flex.items-center.justify-between.h-16
+      h1.text-xl.font-bold.text-gray-800
+        = link_to "Pizzeria", root_path
+
+      ul.flex.space-x-4
+        - if user_signed_in?
+          li
+            = button_to "Log Out", destroy_user_session_path, method: :delete, class: "text-red-600 cursor-pointer"
+        - else
+          li
+            = link_to "Log In", new_user_session_path, class: "text-blue-600 hover:text-blue-800"

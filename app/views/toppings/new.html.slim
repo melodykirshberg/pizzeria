@@ -1,0 +1,6 @@
+.content-body class="h-96 flex flex-col justify-evenly" 
+  .w-full
+  h1.font-bold.text-4xl
+    | New topping
+  = render "form", topping: @topping
+  = link_to "Back to toppings", toppings_path, class: "back-button"

@@ -1,0 +1,21 @@
+.content-body  
+  .w-full
+    - if notice.present?
+      p.notice
+        = notice
+    .sticky-header
+      h1.font-bold.text-4xl
+        | Pizzas
+      = link_to "New pizza", new_pizza_path, class: "new-button"
+    #pizzas.min-w-full.divide-y.divide-gray-200.space-y-5
+      - if @pizzas.any?
+        - @pizzas.each do |pizza|
+          .form-row
+            = render pizza
+            .row-buttons
+              = link_to "Show", pizza, class: "show-edit-button"
+              = link_to "Edit", edit_pizza_path(pizza), class: "show-edit-button"
+              = button_to "Destroy", pizza, method: :delete, class: "destroy-button", data: { turbo_confirm: "Are you sure?" }
+      - else
+        p.text-center.my-10
+          | No pizzas found.

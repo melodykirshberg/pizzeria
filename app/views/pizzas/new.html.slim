@@ -1,0 +1,6 @@
+.content-body  
+  .w-full
+  h1.font-bold.text-4xl
+    | New pizza
+  = render "form", pizza: @pizza
+  = link_to "Back to pizzas", pizzas_path, class: "back-button"

@@ -1,0 +1,15 @@
+= form_with(model: topping, class: "contents") do |form|
+  - if topping.errors.any?
+    .error_explanation
+      h2
+        = pluralize(topping.errors.count, "error")
+        |  prohibited this topping from being saved:
+      ul.list-disc.ml-6
+        - topping.errors.each do |error|
+          li
+            = error.full_message
+  .field
+    = form.label :name, class: "form-field"
+    = form.text_field :name, class: "form-input mb-3"
+  .inline
+    = form.submit class: "update-button"

@@ -1,4 +1,5 @@
 class ToppingsController < ApplicationController
+  before_action :require_owner, only: %i[ index new create edit update destroy ]
   before_action :set_topping, only: %i[ show edit update destroy ]
 
   # GET /toppings or /toppings.json
@@ -25,7 +26,7 @@ class ToppingsController < ApplicationController
 
     respond_to do |format|
       if @topping.save
-        format.html { redirect_to @topping, notice: "Topping was successfully created." }
+        format.html { redirect_to @topping, notice: "#{@topping.name} was successfully created." }
         format.json { render :show, status: :created, location: @topping }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class ToppingsController < ApplicationController
   def update
     respond_to do |format|
       if @topping.update(topping_params)
-        format.html { redirect_to @topping, notice: "Topping was successfully updated." }
+        format.html { redirect_to @topping, notice: "#{@topping.name} was successfully updated." }
         format.json { render :show, status: :ok, location: @topping }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class ToppingsController < ApplicationController
     @topping.destroy!
 
     respond_to do |format|
-      format.html { redirect_to toppings_path, status: :see_other, notice: "Topping was successfully destroyed." }
+      format.html { redirect_to toppings_path, status: :see_other, notice: "#{@topping.name} was successfully destroyed." }
       format.json { head :no_content }
     end
   end

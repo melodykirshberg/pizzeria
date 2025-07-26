@@ -1,0 +1,23 @@
+= form_with(model: pizza, class: "contents") do |form|
+  - if pizza.errors.any?
+    .error_explanation
+      h2
+        = pluralize(pizza.errors.count, "error")
+        |  prohibited this pizza from being saved:
+      ul.list-disc.ml-6
+        - pizza.errors.each do |error|
+          li
+            = error.full_message
+  .field
+    = form.label :name, class: "form-field"
+    = form.text_field :name, class: "form-input mb-3"
+  .field-checkbox
+    = form.label :toppings, class: "form-field sticky mb-1.5 pb-2 bg-white top-0"
+    .field-checkbox-scroll
+      = form.collection_check_boxes :topping_ids, Topping.all, :id, :name do |b|
+        .flex.items-center.mb-2.justify-between.border-b.border-gray-200
+          = b.label class: "inline ml-10"
+          = b.check_box class: "mr-10" 
+  
+  .inline
+    = form.submit class: "update-button"

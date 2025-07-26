@@ -1,0 +1,7 @@
+.content-body  
+  .w-full
+  h1.font-bold.text-4xl
+    | Editing #{@pizza.name}
+  = render "form", pizza: @pizza
+  = link_to "Cancel", @pizza, class: "show-edit-button"
+  = link_to "Back to pizzas", pizzas_path, class: "show-edit-button"

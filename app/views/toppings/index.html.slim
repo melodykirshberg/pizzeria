@@ -1,0 +1,21 @@
+.content-body  
+  .w-full
+    - if notice.present?
+      p.notice
+        = notice
+    .sticky-header
+      h1.font-bold.text-4xl
+        | Toppings
+      = link_to "New topping", new_topping_path, class: "new-button"
+    #toppings.min-w-full.divide-y.divide-gray-200.space-y-5
+      - if @toppings.any?
+        - @toppings.each do |topping|
+          .form-row
+            = render topping
+            .row-buttons
+              = link_to "Show", topping, class: "show-edit-button"
+              = link_to "Edit", edit_topping_path(topping), class: "show-edit-button"
+              = button_to "Destroy", topping, method: :delete, class: "destroy-button", data: { turbo_confirm: "Are you sure?" }
+      - else
+        p.text-center.my-10
+          | No toppings found.
