@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/index"
   resources :pizza_toppings
   resources :toppings
   resources :pizzas
