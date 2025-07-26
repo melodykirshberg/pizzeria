@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pizza_toppings
   resources :toppings
   resources :pizzas
   devise_for :users
