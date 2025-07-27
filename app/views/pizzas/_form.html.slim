@@ -20,4 +20,5 @@
           = b.check_box class: "mr-10" 
   
   .inline
-    = form.submit class: "update-button"
+    - text = params[:action] == "new" ? "Create Pizza" : "Update #{pizza.name}"
+    = form.submit text, class: "update-button"

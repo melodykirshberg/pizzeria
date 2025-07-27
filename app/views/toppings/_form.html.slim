@@ -12,4 +12,5 @@
     = form.label :name, class: "form-field"
     = form.text_field :name, class: "form-input mb-3"
   .inline
-    = form.submit class: "update-button"
+    - text = params[:action] == "new" ? "Create Topping" : "Update #{topping.name}"
+    = form.submit text, class: "update-button"
