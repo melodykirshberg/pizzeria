@@ -92,6 +92,7 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
         run: |
+          bin/rails tailwindcss:build
           bin/rails db:create
           bin/rails db:migrate
 
