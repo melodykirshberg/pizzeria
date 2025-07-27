@@ -28,6 +28,9 @@ You can find a live version [here](https://smassessment-db.onrender.com/).
 6. Start the application ```bin/dev``` or ```rails s```
 7. You're live!
 
+## Running Tests
+To run tests ```bundle exec rspec```
+
 ## Future additions
 - Move main Pizza and Topping components into more reusable components with ViewComponents
 - Add icons
