@@ -1,7 +1,7 @@
 # Pizzeria
 This is an application that lets the user create pizzas, toppings, and assign/unassign to each other. 
 
-You can find a live version [here](https://pizzeria-vppi.onrender.com/).
+You can find a live version [here](https://smassessment-db.onrender.com/).
 
 ## Tech Used
 - Rails 8.0.2
